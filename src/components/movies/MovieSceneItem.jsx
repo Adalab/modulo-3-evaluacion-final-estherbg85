@@ -1,7 +1,7 @@
 
 import PropTypes from 'prop-types';
 
-function MoviesItem ( {oneMovie } ) {
+function MovieSceneItem ( {oneMovie } ) {
     return(
       <>
         <img className="cards_img" src={oneMovie.poster}></img>
@@ -12,8 +12,8 @@ function MoviesItem ( {oneMovie } ) {
     );
 }
 
-MoviesItem.propTypes = {
+MovieSceneItem.propTypes = {
     oneMovie: PropTypes.object
 }
 
-export default MoviesItem;
+export default MovieSceneItem;

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import "../styles/App.scss";
-import MoviesList from "./movies/MoviesList";
-import MoviesItem from "./movies/MoviesItem";
+import MovieSceneList from "./movies/MovieSceneList";
+import MovieSceneItem from "./movies/MovieSceneItem";
 
 function App() {
 
@@ -16,9 +16,8 @@ function App() {
     fetch('https://owen-wilson-wow-api.onrender.com/wows/random?results=50')
     .then(response => response.json() )
     .then(dataJson => {
-      console.log(dataJson);
       setMovies(dataJson);
-      console.log(movies);
+      
     });
   }, []);
 
@@ -53,7 +52,7 @@ function App() {
             
         </form>
         <section>
-          <MoviesList movies={movies}></MoviesList>
+          <MovieSceneList movies={movies}></MovieSceneList>
         </section>
         </main>
     
