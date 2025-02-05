@@ -1,8 +1,40 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+.page {
+    background-color: rgb(233, 243, 240);
 
-.form_search {
-    width: 155px;
+    &_title {
+        padding-top: 50px;
+        margin-bottom: 25px;
+        font-size: 45px;
+        color:rgb(37, 190, 139);
+        justify-content: center;
+        text-align: center;
+    }
+    
+   &_border{
+        border-top: 1px solid rgb(37, 190, 139);
+        padding-bottom: 35px;
+    }
 }
 
-.cards_movie {
-    list-style: none;
+.form {
+    text-align: center;
+    padding-bottom: 25px;
+}
+.form_search {
+    width: 255px;
+    height: 35px;
+    border-radius: 8px;
+    border: 2px solid rgb(37, 190, 139);
+    margin-right: 25px;
+}
+.form_filter {
+    font-weight: bold;
+    font-size: 20px;
+    color: rgb(37, 190, 139);
+    padding-right: 15px;
 }

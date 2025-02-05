@@ -25,18 +25,18 @@ function App() {
   return (
     <div className="page">
       <header>
-        <h1 className="header_title">Owen Wilson's "WOW"</h1>
-        <p className="header_border"></p>
+        <h1 className="page_title">Owen Wilson's "WOW"</h1>
+        <p className="page_border"></p>
       </header>
       <main>
-        <form>
-          <label  className="form_movie" htmlFor="movie">Movie</label>
+        <form className="form">
+          <label  className="form_filter" htmlFor="movie">Movie</label>
           <input
             className="form_search"
             autoComplete="off"
             type="search"
             name="movie"/>
-          <label  className="form_age" htmlFor="year">Year</label>
+          <label  className="form_filter" htmlFor="year">Year</label>
           <select className="form_search" id="yearFilter" placeholder="All">
             <option value="">All</option>
             <option value="2020">2015</option>
