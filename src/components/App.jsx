@@ -8,19 +8,29 @@ function App() {
   //VARIABLES DE ESTADO
 
   const [movies, setMovies] = useState([]);
+  const [filterMovie, setFilterMovie] = useState("");
+  const [filteredMovies, setFilteredMovies] = useState([]);
 
   //USEEFFECT
 
   useEffect( () =>{
-  
     fetch('https://owen-wilson-wow-api.onrender.com/wows/random?results=50')
     .then(response => response.json() )
     .then(dataJson => {
+      console.log(dataJson)
       setMovies(dataJson);
-      
+      setFilteredMovies(dataJson);
     });
   }, []);
+  
+  const handleInputFilterMovie = (ev) => {
+    ev.preventDefault();
+    setFilterMovie(ev.target.value);
+    
+    setFilteredMovies(movies.filter( movie => movie.movie.toLocaleLowerCase().includes(filterMovie.toLocaleLowerCase())));
+  };
 
+  
   return (
     <div className="page">
       <header>
@@ -34,7 +44,9 @@ function App() {
             className="form_search"
             autoComplete="off"
             type="search"
-            name="movie"/>
+            name="movie"
+            onInput={handleInputFilterMovie}
+            value={filterMovie}/>
           <label  className="form_filter" htmlFor="year">Year</label>
           <select className="form_search" id="yearFilter" placeholder="All">
             <option value="">All</option>
@@ -52,7 +64,7 @@ function App() {
             
         </form>
         <section>
-          <MovieSceneList movies={movies}></MovieSceneList>
+        <MovieSceneList movies={filteredMovies}></MovieSceneList>
         </section>
         </main>
     
