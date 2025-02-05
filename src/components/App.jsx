@@ -1,6 +1,23 @@
+import { useState, useEffect } from "react";
 import './styles/App.scss'
 
 function App() {
+
+  //VARIABLES DE ESTADO
+
+  const [movies, setMovies] = useState([]);
+
+  //USEEFFECT
+
+  useEffect( () =>{
+  
+    fetch('https://owen-wilson-wow-api.onrender.com/wows/random?results=50')
+    .then(response => response.json() )
+    .then(dataJson => {
+      setMovies(dataJson);
+    });
+  }, []);
+
   return (
     <div className="page">
       <header>
@@ -32,14 +49,7 @@ function App() {
             
         </form>
         <section>
-        <ul className="cards">
-          <li className="cards_movie">
-            <img className="cards_img" src="https://images.ctfassets.net/bs8ntwkklfua/43fOBsgY8iOJL0dijvFnfl/ea361efc5131a859c173ab5dd3fdfe1e/Cars_3_Poster.jpg"></img>
-            <p className="cards_movie">"Cars 3"</p>
-            <p className="cards_year">2017</p>
-            <p className="cards_full_line">"Oh, hey, Mr. Sterling. Wow."</p>
-          </li>
-        </ul>
+        
         </section>
         </main>
     
