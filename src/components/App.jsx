@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import "../styles/App.scss";
 import { Routes, Route } from 'react-router';
-import MovieSceneList from "./movies/MovieSceneList";
+
 import FilterYears from "./movies/FilterYears";
 import Header from './layout/Header';
 import DetailPage  from './pages/DetailPage';
+import LandingPage from './pages/LandingPage';
+
 
 function App() {
 
@@ -65,7 +67,8 @@ function App() {
      <Header></Header>
       <main>
       <Routes>
-          <Route path="/detail/:name" element={<DetailPage/>} />
+          <Route index element={<LandingPage movies={filteredMovies}/>} ></Route>
+          <Route path="/detail/:movie" element={<DetailPage/>}></Route>
         </Routes>
         <form className="form">
           <label  className="form_filter" htmlFor="movie">Movie</label>
@@ -79,9 +82,7 @@ function App() {
           <label  className="form_filter" htmlFor="year">Year</label>
           <FilterYears years={uniqueYears} onChange={handleYearFilter}></FilterYears>
         </form>
-        <section>
-            <MovieSceneList movies={filteredMovies}></MovieSceneList>
-        </section>
+        
         
         </main>
     
