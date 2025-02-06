@@ -8,7 +8,7 @@ function App() {
   //VARIABLES DE ESTADO
 
   const [movies, setMovies] = useState([]);
-  const [filterMovie, setFilterMovie] = useState("");
+const [filterMovie, setFilterMovie] = useState("");
   const [filteredMovies, setFilteredMovies] = useState([]);
 
   //USEEFFECT
@@ -24,10 +24,10 @@ function App() {
   }, []);
   
   const handleInputFilterMovie = (ev) => {
-    ev.preventDefault();
-    setFilterMovie(ev.target.value);
-    
-    setFilteredMovies(movies.filter( movie => movie.movie.toLocaleLowerCase().includes(filterMovie.toLocaleLowerCase())));
+    const searchTerm = ev.target.value.toLowerCase(); // Obtener el término de búsqueda en minúsculas
+    setFilteredMovies(
+      movies.filter((movie) => movie.movie.toLowerCase().includes(searchTerm))
+    );
   };
 
   
@@ -46,7 +46,7 @@ function App() {
             type="search"
             name="movie"
             onInput={handleInputFilterMovie}
-            value={filterMovie}/>
+            />
           <label  className="form_filter" htmlFor="year">Year</label>
           <select className="form_search" id="yearFilter" placeholder="All">
             <option value="">All</option>
