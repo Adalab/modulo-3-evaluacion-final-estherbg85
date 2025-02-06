@@ -36,6 +36,7 @@ function App() {
     });
   }, []);
   
+  
   const handleInputFilterMovie = (ev) => {
     ev.preventDefault();
     console.log(ev.target.value);
@@ -62,27 +63,20 @@ function App() {
     }
   }
 
+  const findMovie = (movie) => {
+    return movies.find(oneMovie => oneMovie.movie === movie);
+   }
+
   return (
     <div className="page">
      <Header></Header>
       <main>
-      <Routes>
-          <Route index element={<LandingPage movies={filteredMovies}/>} ></Route>
-          <Route path="/detail/:movie" element={<DetailPage/>}></Route>
-        </Routes>
-        <form className="form">
-          <label  className="form_filter" htmlFor="movie">Movie</label>
-          <input
-            className="form_search"
-            autoComplete="off"
-            type="search"
-            name="movie"
-            onInput={handleInputFilterMovie} 
-            />
-          <label  className="form_filter" htmlFor="year">Year</label>
-          <FilterYears years={uniqueYears} onChange={handleYearFilter}></FilterYears>
-        </form>
+      
         
+        <Routes>
+          <Route index element={<LandingPage  movies={filteredMovies}/>} ></Route>
+          <Route path="detail/:movie" element={<DetailPage findMovie={findMovie}/>}></Route>
+        </Routes>
         
         </main>
     

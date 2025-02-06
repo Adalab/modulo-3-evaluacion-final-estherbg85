@@ -1,8 +1,7 @@
 import PropTypes from 'prop-types';
 
 function FilterYears({years, onChange} ){
-    console.log("years");
-    console.log(years);
+                     
     return (
         <select className="form_search" id="yearFilter" placeholder="All" onChange={onChange}>
             <option value="">All</option>
