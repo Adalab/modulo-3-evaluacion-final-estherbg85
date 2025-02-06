@@ -65,6 +65,9 @@ function App() {
     <div className="page">
      <Header></Header>
       <main>
+        <Routes>
+          <Route path="detail/:name" element={}></Route>
+        </Routes>
         <form className="form">
           <label  className="form_filter" htmlFor="movie">Movie</label>
           <input
