@@ -11,6 +11,8 @@ function App() {
   const [movies, setMovies] = useState([]);
   const [filteredMovies, setFilteredMovies] = useState([]);
   const [uniqueYears, setUniqueYears] = useState([]);
+  const [movieOne, setMovieOne] = useState("");
+  const [yearOne, setYearOne] = useState("");
 
 
   //USEEFFECT
@@ -32,27 +34,32 @@ function App() {
   
   const handleInputFilterMovie = (ev) => {
     ev.preventDefault();
-    const searchTerm = ev.target.value.toLowerCase(); 
-    setFilteredMovies(movies.filter((movie) => movie.movie.toLowerCase().includes(searchTerm))
-    );
+    console.log(ev.target.value);
+    filterMovieYear(ev.target.value.toLowerCase(), yearOne);
   };
 
   const handleYearFilter = (ev) => {
-
-
-    const selectedYear = ev.target.value; // Obtener el año seleccionado
-    if (selectedYear === "") {
-      setFilteredMovies(movies); // Si se selecciona "Todos", mostramos todas las películas
-    } else {
-      setFilteredMovies(
-        movies.filter((movie) => movie.year === Number(selectedYear)) // Asegurarnos de comparar los números correctamente
-      );
-    }
-    /*console.log(uniqueYears);
-    setFilteredMovies(
-      filteredMovies.filter((movie) => movie.year === ev.target.value)
-    );*/
+    ev.preventDefault();
+    console.log(ev.target.value);
+    filterMovieYear(movieOne, ev.target.value);
   };
+   
+  
+  function filterMovieYear(film, age) {
+    setMovieOne(film);
+    setYearOne(age);
+    if (film === ""){
+      setFilteredMovies(movies.filter((movie) => movie.year === Number(age)));
+    }
+    if (age === "") {
+      setFilteredMovies(movies.filter((movie) => movie.movie.toLowerCase().includes(film)));
+    }else{
+      setFilteredMovies(movies.filter((movie) => (movie.movie.toLowerCase().includes(film) && movie.year === Number(age))));
+    }
+  }
+
+
+  
 
   return (
     <div className="page">
