@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import "../styles/App.scss";
 import MovieSceneList from "./movies/MovieSceneList";
+import FilterYears from "./movies/FilterYears";
 import Header from './layout/Header';
 
 function App() {
@@ -8,8 +9,9 @@ function App() {
   //VARIABLES DE ESTADO
 
   const [movies, setMovies] = useState([]);
-const [filterMovie, setFilterMovie] = useState("");
   const [filteredMovies, setFilteredMovies] = useState([]);
+  const [uniqueYears, setUniqueYears] = useState([]);
+
 
   //USEEFFECT
 
@@ -20,6 +22,11 @@ const [filterMovie, setFilterMovie] = useState("");
       console.log(dataJson)
       setMovies(dataJson);
       setFilteredMovies(dataJson);
+
+    
+        const movieYears = [...new Set(dataJson.map((oneMovie) => oneMovie.year))];
+        setUniqueYears(movieYears);
+        console.log(uniqueYears);
     });
   }, []);
   
@@ -30,7 +37,23 @@ const [filterMovie, setFilterMovie] = useState("");
     );
   };
 
-  
+  const handleYearFilter = (ev) => {
+
+
+    const selectedYear = ev.target.value; // Obtener el año seleccionado
+    if (selectedYear === "") {
+      setFilteredMovies(movies); // Si se selecciona "Todos", mostramos todas las películas
+    } else {
+      setFilteredMovies(
+        movies.filter((movie) => movie.year === Number(selectedYear)) // Asegurarnos de comparar los números correctamente
+      );
+    }
+    /*console.log(uniqueYears);
+    setFilteredMovies(
+      filteredMovies.filter((movie) => movie.year === ev.target.value)
+    );*/
+  };
+
   return (
     <div className="page">
      <Header></Header>
@@ -45,19 +68,7 @@ const [filterMovie, setFilterMovie] = useState("");
             onInput={handleInputFilterMovie} 
             />
           <label  className="form_filter" htmlFor="year">Year</label>
-          <select className="form_search" id="yearFilter" placeholder="All">
-            <option value="">All</option>
-            <option value="2020">2015</option>
-            <option value="2021">2016</option>
-            <option value="2022">2017</option>
-            <option value="2023">2018</option>
-            <option value="2024">2019</option>
-            <option value="2020">2020</option>
-            <option value="2021">2021</option>
-            <option value="2022">2022</option>
-            <option value="2023">2023</option>
-            <option value="2024">2024</option>
-          </select>
+          <FilterYears years={uniqueYears} onChange={handleYearFilter}></FilterYears>
             
         </form>
         <section>
@@ -69,4 +80,4 @@ const [filterMovie, setFilterMovie] = useState("");
   )
 }
 
-export default App
+export default App;
