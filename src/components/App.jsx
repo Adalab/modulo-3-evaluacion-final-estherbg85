@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import "../styles/App.scss";
 import MovieSceneList from "./movies/MovieSceneList";
-import MovieSceneItem from "./movies/MovieSceneItem";
+import Header from './layout/Header';
 
 function App() {
 
@@ -24,19 +24,16 @@ const [filterMovie, setFilterMovie] = useState("");
   }, []);
   
   const handleInputFilterMovie = (ev) => {
-    const searchTerm = ev.target.value.toLowerCase(); // Obtener el término de búsqueda en minúsculas
-    setFilteredMovies(
-      movies.filter((movie) => movie.movie.toLowerCase().includes(searchTerm))
+    ev.preventDefault();
+    const searchTerm = ev.target.value.toLowerCase(); 
+    setFilteredMovies(movies.filter((movie) => movie.movie.toLowerCase().includes(searchTerm))
     );
   };
 
   
   return (
     <div className="page">
-      <header>
-        <h1 className="page_title">Owen Wilson's "WOW"</h1>
-        <p className="page_border"></p>
-      </header>
+     <Header></Header>
       <main>
         <form className="form">
           <label  className="form_filter" htmlFor="movie">Movie</label>
@@ -45,7 +42,7 @@ const [filterMovie, setFilterMovie] = useState("");
             autoComplete="off"
             type="search"
             name="movie"
-            onInput={handleInputFilterMovie}
+            onInput={handleInputFilterMovie} 
             />
           <label  className="form_filter" htmlFor="year">Year</label>
           <select className="form_search" id="yearFilter" placeholder="All">
