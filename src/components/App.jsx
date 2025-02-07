@@ -8,6 +8,7 @@ import DetailPage  from './pages/DetailPage';
 import LandingPage from './pages/LandingPage';
 
 
+
 function App() {
 
   //VARIABLES DE ESTADO
@@ -74,7 +75,7 @@ function App() {
       
         
         <Routes>
-          <Route index element={<LandingPage  movies={filteredMovies}/>} ></Route>
+          <Route index element={<LandingPage  movies={filteredMovies} handleInputFilterMovie={handleInputFilterMovie} uniqueYears={uniqueYears} handleYearFilter={handleYearFilter}/>} ></Route>
           <Route path="detail/:movie" element={<DetailPage findMovie={findMovie}/>}></Route>
         </Routes>
         
