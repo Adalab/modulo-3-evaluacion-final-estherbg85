@@ -1,6 +1,6 @@
 import FilterYears from "./FilterYears";
 
-function FilterMovies({handleInputFilterMovie, uniqueYears, handleYearFilter, handleClickClear }) {
+function FilterMovies({handleInputFilterMovie, uniqueYears, handleYearFilter,handleKeyDown,handleClickClear }) {
     return(
         <form className="form">
             <label  className="form_filter" htmlFor="movie">Movie</label>
@@ -10,10 +10,12 @@ function FilterMovies({handleInputFilterMovie, uniqueYears, handleYearFilter, ha
             type="search"
             name="movie"
             onInput={handleInputFilterMovie} 
+            onKeyDown={handleKeyDown}
             />
             <label  className="form_filter" htmlFor="year">Year</label>
             <FilterYears years={uniqueYears} onChange={handleYearFilter}></FilterYears>
-            <input className="form_btn" type="reset" value="Borrar" onClick={handleClickClear} />
+            <button className="form_btn" onClick={handleClickClear}>Borrar</button>
+            
       </form>
 
     )

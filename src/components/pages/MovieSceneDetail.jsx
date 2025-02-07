@@ -1,6 +1,6 @@
 import {useParams, Link} from 'react-router';
 import imgmovie from '../../images/—Pngtree—a free director s chair_15014238 (2).png'
-
+import imgaudio from '../../images/13-50-26-112_512.webp';
 
 function MovieSceneDetail({findMovie}) {
 
@@ -16,8 +16,11 @@ function MovieSceneDetail({findMovie}) {
                 <p className="detail_director">"{movie.director}"</p>
                 <img className="detail_director_chair" src={imgmovie}></img>
                 <p className="detail_full_line">{movie.full_line}</p>
-            <a href={movie.audio} download="NuevoNombreAudio.mp3"target="_blank" 
-                rel="noopener noreferrer" className="detail_audio">Escuchar Audio</a>
+                <a href={movie.audio} download="NuevoNombreAudio.mp3"target="_blank" 
+                    rel="noopener noreferrer" className="detail_audio">Escuchar Audio </a>
+            </div>
+            <div>
+            <img className="detail_audio_img" src={imgaudio}></img>
             </div>
             <Link to="/" className="btn">Volver</Link>
         </section>

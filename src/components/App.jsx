@@ -57,6 +57,7 @@ function App() {
     }
     if (age === "") {
       setFilteredMovies(movies.filter((movie) => movie.movie.toLowerCase().includes(film)));
+    
     }else{
       setFilteredMovies(movies.filter((movie) => (movie.movie.toLowerCase().includes(film) && movie.year === Number(age))));
     }
@@ -70,6 +71,7 @@ function App() {
     setMovieOne(''); // Limpiar el filtro de películas
     setYearOne(''); // Limpiar el filtro de años
     setFilteredMovies(movies); //Volver a mostrar todo el listado
+
    }
 
 
