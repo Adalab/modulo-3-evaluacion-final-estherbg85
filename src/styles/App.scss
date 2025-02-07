@@ -16,7 +16,7 @@
     }
     
    &_border{
-        border-top: 1px solid rgb(37, 190, 139);
+        border-top: 2px dashed black;
         padding-bottom: 35px;
     }
 }
@@ -58,7 +58,7 @@
         list-style-type: none;
         width: 280px;
         height: 585px;
-        border: 3px solid rgb(37, 190, 139);
+        border:5px dashed rgb(0, 0, 0);
         border-radius: 3%;
         display: grid;  
         background-color: rgb(37, 190, 139);
@@ -98,7 +98,7 @@
     list-style-type: none;
     width: auto;
     height: 750px;
-    border: 20px dashed black;
+    border: 18px dashed black;
     display: grid;  
     background-color: rgb(37, 190, 139);
    
@@ -132,8 +132,8 @@
     }
 
     &_director_chair {
-        height: 120px;
-        width: 120px;
+        height: 140px;
+        width: 140px;
     }
 
    
