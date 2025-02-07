@@ -39,6 +39,17 @@
         color: rgb(37, 190, 139);
         padding-right: 15px;
     }
+
+    &_btn {
+        background-color: rgb(37, 190, 139);
+        border-radius: 5px;
+        border: rgb(37, 190, 139);
+        font-size: 16px;
+        font-weight: bold;
+        color: white;
+        height: 35px;
+        width: 85px;
+    }
 }
 
 .cards {
@@ -97,10 +108,11 @@
     justify-content: center;
     list-style-type: none;
     width: auto;
-    height: 750px;
+    height: auto;
     border: 18px dashed black;
     display: grid;  
     background-color: rgb(37, 190, 139);
+    margin-bottom: 50px;
    
 
     &_colum {

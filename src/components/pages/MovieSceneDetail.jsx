@@ -2,7 +2,7 @@ import {useParams, Link} from 'react-router';
 import imgmovie from '../../images/—Pngtree—a free director s chair_15014238 (2).png'
 
 
-function DetailPage({findMovie}) {
+function MovieSceneDetail({findMovie}) {
 
     const params = useParams();
 
@@ -17,11 +17,11 @@ function DetailPage({findMovie}) {
                 <img className="detail_director_chair" src={imgmovie}></img>
                 <p className="detail_full_line">{movie.full_line}</p>
             <a href={movie.audio} download="NuevoNombreAudio.mp3"target="_blank" 
-  rel="noopener noreferrer" className="detail_audio">Escuchar Audio</a>
+                rel="noopener noreferrer" className="detail_audio">Escuchar Audio</a>
             </div>
             <Link to="/" className="btn">Volver</Link>
         </section>
     );
 }
 
-export default DetailPage;
+export default MovieSceneDetail;

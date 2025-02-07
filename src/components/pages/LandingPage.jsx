@@ -1,12 +1,12 @@
 import MovieSceneList from "../movies/MovieSceneList";
-import FilterForm from "../movies/FilterForm";
+import FilterMovies from "../movies/FilterMovies";
 
-function LandingPage({movies, handleInputFilterMovie, uniqueYears, handleYearFilter}) {
+function LandingPage({movies, handleInputFilterMovie, uniqueYears, handleYearFilter, handleKeyDown, handleClickClear}) {
 
     return (
         
         <section>
-            <FilterForm handleInputFilterMovie={handleInputFilterMovie} uniqueYears={uniqueYears} handleYearFilter={handleYearFilter} ></FilterForm>
+            <FilterMovies handleInputFilterMovie={handleInputFilterMovie} uniqueYears={uniqueYears} handleYearFilter={handleYearFilter} handleKeyDown={handleKeyDown} handleClickClear={handleClickClear}></FilterMovies>
             <MovieSceneList movies={movies}></MovieSceneList>
         </section>
     );

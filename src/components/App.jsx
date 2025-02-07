@@ -1,10 +1,8 @@
 import { useState, useEffect } from "react";
 import "../styles/App.scss";
 import { Routes, Route } from 'react-router';
-
-import FilterYears from "./movies/FilterYears";
 import Header from './layout/Header';
-import DetailPage  from './pages/DetailPage';
+import MovieSceneDetail  from './pages/MovieSceneDetail';
 import LandingPage from './pages/LandingPage';
 
 
@@ -26,31 +24,31 @@ function App() {
     fetch('https://owen-wilson-wow-api.onrender.com/wows/random?results=50')
     .then(response => response.json() )
     .then(dataJson => {
-      console.log(dataJson)
       setMovies(dataJson);
       setFilteredMovies(dataJson);
 
-    
         const movieYears = [...new Set(dataJson.map((oneMovie) => oneMovie.year))];
         setUniqueYears(movieYears);
-        console.log(uniqueYears);
     });
   }, []);
   
   
   const handleInputFilterMovie = (ev) => {
     ev.preventDefault();
-    console.log(ev.target.value);
     filterMovieYear(ev.target.value.toLowerCase(), yearOne);
+  };
+
+  const handleKeyDown = (ev) => {
+    if (ev.key === "Enter") {
+      ev.preventDefault(); // Para evitar recargar la pagina al pulsar
+    }
   };
 
   const handleYearFilter = (ev) => {
     ev.preventDefault();
-    console.log(ev.target.value);
     filterMovieYear(movieOne, ev.target.value);
   };
    
-  
   function filterMovieYear(film, age) {
     setMovieOne(film);
     setYearOne(age);
@@ -68,15 +66,21 @@ function App() {
     return movies.find(oneMovie => oneMovie.movie === movie);
    }
 
+   const handleClickClear = () => {
+    setMovieOne(''); // Limpiar el filtro de películas
+    setYearOne(''); // Limpiar el filtro de años
+    setFilteredMovies(movies); //Volver a mostrar todo el listado
+   }
+
+
   return (
     <div className="page">
      <Header></Header>
       <main>
-      
         
         <Routes>
-          <Route index element={<LandingPage  movies={filteredMovies} handleInputFilterMovie={handleInputFilterMovie} uniqueYears={uniqueYears} handleYearFilter={handleYearFilter}/>} ></Route>
-          <Route path="detail/:movie" element={<DetailPage findMovie={findMovie}/>}></Route>
+          <Route index element={<LandingPage  movies={filteredMovies} handleInputFilterMovie={handleInputFilterMovie} uniqueYears={uniqueYears} handleYearFilter={handleYearFilter} handleKeyDown={handleKeyDown} handleClickClear={handleClickClear}/>} ></Route>
+          <Route path="detail/:movie" element={<MovieSceneDetail findMovie={findMovie}/>}></Route>
         </Routes>
         
         </main>
