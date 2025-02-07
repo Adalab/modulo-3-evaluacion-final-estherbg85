@@ -71,12 +71,11 @@ function App() {
     setMovieOne(''); // Limpiar el filtro de películas
     setYearOne(''); // Limpiar el filtro de años
     setFilteredMovies(movies); //Volver a mostrar todo el listado
-
    }
 
 
   return (
-    <div className="page">
+    <div>
      <Header></Header>
       <main>
         

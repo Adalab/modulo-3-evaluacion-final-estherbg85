@@ -17,10 +17,7 @@ function MovieSceneDetail({findMovie}) {
                 <img className="detail_director_chair" src={imgmovie}></img>
                 <p className="detail_full_line">{movie.full_line}</p>
                 <a href={movie.audio} download="NuevoNombreAudio.mp3"target="_blank" 
-                    rel="noopener noreferrer" className="detail_audio">Escuchar Audio </a>
-            </div>
-            <div>
-            <img className="detail_audio_img" src={imgaudio}></img>
+                    rel="noopener noreferrer"><img className="detail_audio" src={imgaudio}></img></a>
             </div>
             <Link to="/" className="btn">Volver</Link>
         </section>
