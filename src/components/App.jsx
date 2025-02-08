@@ -67,10 +67,12 @@ function App() {
     return movies.find(oneMovie => oneMovie.movie === movie);
    }
 
-   const handleClickClear = () => {
-    setMovieOne(''); // Limpiar el filtro de películas
-    setYearOne(''); // Limpiar el filtro de años
-    setFilteredMovies(movies); //Volver a mostrar todo el listado
+   const handleClickClear = (ev) => {
+    ev.preventDefault(); //Volver a mostrar todo el listado
+    setMovieOne(""); // Limpiar el filtro de películas
+    setYearOne(""); // Limpiar el filtro de años
+    setFilteredMovies(movies);
+    
    }
 
 
@@ -80,7 +82,7 @@ function App() {
       <main>
         
         <Routes>
-          <Route index element={<LandingPage  movies={filteredMovies} handleInputFilterMovie={handleInputFilterMovie} uniqueYears={uniqueYears} handleYearFilter={handleYearFilter} handleKeyDown={handleKeyDown} handleClickClear={handleClickClear}/>} ></Route>
+          <Route index element={<LandingPage  movies={filteredMovies} handleInputFilterMovie={handleInputFilterMovie} uniqueYears={uniqueYears} handleYearFilter={handleYearFilter} handleKeyDown={handleKeyDown} handleClickClear={handleClickClear} movieOne={movieOne}/>} ></Route>
           <Route path="detail/:movie" element={<MovieSceneDetail findMovie={findMovie}/>}></Route>
         </Routes>
         
