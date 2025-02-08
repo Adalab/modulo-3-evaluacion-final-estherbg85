@@ -1,0 +1,78 @@
+@use '../core/variables' as varis;
+
+.form {
+    display: grid;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    margin-bottom: 25px;
+    gap: 10px;
+    margin-inline: auto;
+    
+    @include varis.tablet {
+        display: flex;
+        width: 768px;
+    }
+    
+    @include varis.desktop {
+        padding-bottom: 55px;
+    }
+
+    &_search {
+        width: 280px;
+        height: 30px;
+        border-radius: 8px;
+        border: 2px solid rgb(37, 190, 139);
+     
+        @include varis.tablet {
+            width:230px;
+            height: 35px;
+        }
+
+        @include varis.desktop {
+            width: 300px;
+            height: 45px;
+            border-radius: 8px;
+            margin-right: 25px;
+        }
+    }
+
+    &_filter {
+        font-weight: bold;
+        font-size: 16px;
+        color: rgb(37, 190, 139); 
+
+        @include varis.tablet {
+            font-size: 18px;
+        }
+        
+        @include varis.desktop {
+            font-size: 20px;
+            padding-right: 15px;
+        }
+    }
+
+    &_btn {
+        align-items: center;
+        background-color: rgb(37, 190, 139);
+        border-radius: 5px;
+        border: rgb(37, 190, 139);
+        font-size: 14px;
+        font-weight: bold;
+        color: white;
+        height: 25px;
+        width: 55px;
+        margin-inline: auto;
+
+        @include varis.tablet {
+            margin-right: 35px;
+            height: 35px;
+            width: 85px; 
+        }
+
+        @include varis.desktop {
+            font-size: 16px;
+            width: 100px;
+        }
+    }
+}

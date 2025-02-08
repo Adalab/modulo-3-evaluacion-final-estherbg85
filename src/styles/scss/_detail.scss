@@ -1,0 +1,155 @@
+@use '../core/variables' as varis;
+
+.detail {
+    padding-bottom: 25px;
+    list-style-type: none;
+    width: 300px;
+    height: auto;
+    border: 12px dashed black; 
+    background-color: rgb(37, 190, 139);
+    text-align: center;
+    justify-content: center;
+    list-style-type: none;
+    margin-inline: auto;
+
+    @include varis.tablet {
+        border: 15px dashed black;
+        width: 700px;
+    }
+
+    @include varis.desktop {
+        display: grid;
+        grid-template-columns: 40% 60%;   
+        border: 18px dashed black; 
+        padding-bottom: 40px;
+        width: auto;
+    }
+   
+    &_colum {
+        line-height: 40px;
+        
+        @include varis.tablet {
+            line-height: 70px;
+        }
+    }
+
+    &_img {
+        border: 4px double red;
+        margin-top: 25px;
+        align-items: center;
+        width: 220px;   
+        height: 300px; 
+
+        @include varis.tablet {
+            width: 500px;   
+            height: auto; 
+        }
+
+        @include varis.desktop {
+            border: 8px double red;
+            margin-left: 55px;
+            width:380px;   
+        }  
+    }
+
+    &_movie {
+        padding-top: 45px;
+        font-size: 45px;
+        font-weight: bold;
+        color: white;
+
+        @include varis.tablet {
+            font-size: 75px;
+        }
+
+        @include varis.desktop {
+            margin-bottom: 25px;
+            font-weight: bold;
+        }
+    }
+
+    &_span {
+        display: none;
+
+        @include varis.tablet {
+            display: inline-block;
+            font-size: 25px;  
+        }
+
+        @include varis.desktop {
+            font-size: 50px;
+            margin-inline: 20px;
+        }
+    }
+
+    &_director {
+        font-size: 25px;
+        color: yellow;
+
+        @include varis.tablet {
+            font-size: 35px;
+        }
+
+        @include varis.desktop {
+            font-size: 45px;
+        }
+    }
+
+    &_director_chair {
+        height: 80px;
+        width: 70px;
+
+        @include varis.tablet {
+            height: 120px;
+            width: 110px;
+        }
+
+        @include varis.desktop {
+            height: 160px;
+            width: 140px;
+        }
+    }
+
+    &_full_line {
+        font-size: 20px;
+        color: white;
+
+        @include varis.tablet {
+            font-size: 25px;
+
+        }
+        @include varis.desktop {
+            margin-inline: 25px;
+            font-size: 30px;
+        }
+    }
+
+    &_audio {
+        height: 85px;
+        width:150px; 
+
+        @include varis.tablet {
+            height: 110px;
+            width:180px; 
+        }
+    }
+}
+
+.btn {
+    padding: 5px 5px;
+    text-align: center;
+    font-size: 20px;
+    text-decoration: none;
+    border: 2px solid yellow;
+    background-color: yellow;
+    border-radius: 8px;
+    color: rgb(131, 18, 18);
+    font-weight: bold;
+
+    @include varis.tablet {
+        margin-inline: auto;
+        width: 75px;
+        font-size: 20px;
+    }
+
+}

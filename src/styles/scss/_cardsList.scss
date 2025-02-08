@@ -1,0 +1,90 @@
+@use '../core/variables' as varis;
+
+.cards {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; 
+    grid-row-gap: 20px;
+
+    @include varis.tablet {
+        margin-inline: 10px;
+        justify-items: center;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 5px;
+        grid-row-gap: 15px;
+    }
+
+    @include varis.desktop {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 20px;
+    }
+    
+    &_list a {
+        text-decoration: none;
+    }
+
+    &_list {
+        text-align: center;
+        align-items: center;     
+        justify-content: center;
+        list-style-type: none;
+        width: 250px;
+        height: 400px;
+        border:5px dashed rgb(0, 0, 0);
+        border-radius: 3%;
+        background-color: rgb(37, 190, 139);
+
+        @include varis.tablet {
+            width: 230px;
+            height: 400px;
+        }
+
+        @include varis.desktop {
+            width: 280px;
+            height: 585px;
+        }
+    }
+
+    &_img { 
+        margin-top: 15px;
+        width: 180px;   
+        height: 270px; 
+
+        @include varis.desktop { 
+            width: 240px;   
+            height: auto;   
+        }
+    }
+  
+    &_movie {
+        margin-top: 10px;
+        font-size: 20px;
+        color: white;
+
+        @include varis.desktop {
+            margin-top: 25px;
+            font-size: 26px;
+        }
+    }
+
+    &_year {
+        font-size: 16px;
+        color: yellow;
+
+        @include varis.desktop {
+            font-size: 22px;
+        }
+    }
+
+    &_full_line {
+        margin-inline: 10px;
+        font-size:12px;
+        color: white;
+
+        @include varis.desktop {
+            font-size:18px;
+        }
+    }
+}
+

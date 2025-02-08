@@ -1,0 +1,30 @@
+@use '../core/variables' as varis;
+
+.page {
+    background-color: rgb(233, 243, 240);
+
+    &_title {
+        margin-inline: 25px;
+        font-size: 25px;
+        padding-top: 30px;
+        margin-bottom: 25px;
+        color:rgb(37, 190, 139);
+        justify-content: center;
+        text-align: center;
+     
+        @include varis.tablet {
+            font-size: 40px;
+        }
+   
+        @include varis.desktop {
+            padding-top: 50px;
+            margin-bottom: 25px;
+            font-size: 45px;
+        }
+    }  
+
+    &_border{
+        border-top: 2px dashed black;
+        padding-bottom: 35px;
+    }
+}
