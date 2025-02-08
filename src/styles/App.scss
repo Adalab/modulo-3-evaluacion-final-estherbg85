@@ -1,5 +1,5 @@
-@import 'core/variables';
-@import 'styles-css/header';
+@use './core/variables' as varis;
+
 
 * {
     margin: 0;
@@ -7,22 +7,50 @@
     box-sizing: border-box;
   }
 
+  .page {
+    background-color: rgb(233, 243, 240);
+
+    &_title {
+        margin-inline: 25px;
+        font-size: 25px;
+        padding-top: 30px;
+        margin-bottom: 25px;
+        color:rgb(37, 190, 139);
+        justify-content: center;
+        text-align: center;
+     
+        @include varis.tablet {
+            font-size: 40px;
+        }
+   
+        @include varis.desktop {
+            padding-top: 50px;
+            margin-bottom: 25px;
+            font-size: 45px;
+        }
+    }  
+
+    &_border{
+        border-top: 2px dashed black;
+        padding-bottom: 35px;
+    }
+}
 
 .form {
     display: grid;
     align-items: center;
     text-align: center;
     justify-content: center;
-    padding-bottom: 35px;
+    margin-bottom: 25px;
     gap: 10px;
-
-    @include tablet {
-        margin-inline: 50%;
+    margin-inline: auto;
+    
+    @include varis.tablet {
         display: flex;
+        width: 768px;
     }
     
-    @include desktop {
-        display: flex;
+    @include varis.desktop {
         padding-bottom: 55px;
     }
 
@@ -31,15 +59,14 @@
         height: 30px;
         border-radius: 8px;
         border: 2px solid rgb(37, 190, 139);
-        margin-right: 25px;
-
-        @include tablet {
-            width: 200px;
-            height: 30px;
+     
+        @include varis.tablet {
+            width:230px;
+            height: 35px;
         }
 
-        @include desktop {
-            width: 265px;
+        @include varis.desktop {
+            width: 300px;
             height: 45px;
             border-radius: 8px;
             border: 2px solid rgb(37, 190, 139);
@@ -51,12 +78,12 @@
         font-weight: bold;
         font-size: 16px;
         color: rgb(37, 190, 139); 
-        @include tablet { 
-            width: 200px;
-            height: 30px;
+
+        @include varis.tablet {
+            font-size: 18px;
         }
         
-        @include desktop {
+        @include varis.desktop {
             font-size: 20px;
             padding-right: 15px;
         }
@@ -72,9 +99,15 @@
         color: white;
         height: 25px;
         width: 55px;
-        margin-left: 40%;
+        margin-inline: auto;
 
-        @include desktop {
+        @include varis.tablet {
+            margin-right: 35px;
+            height: 35px;
+            width: 85px; 
+        }
+
+        @include varis.desktop {
             background-color: rgb(37, 190, 139);
             border-radius: 5px;
             border: rgb(37, 190, 139);
@@ -94,18 +127,18 @@
     gap: 10px; 
     grid-row-gap: 20px;
 
-    @include tablet {
+    @include varis.tablet {
         margin-inline: 10px;
         justify-items: center;
         grid-template-columns: 1fr 1fr 1fr;
         gap: 5px;
-        grid-row-gap: 20px;
+        grid-row-gap: 15px;
     }
 
-    @include desktop {
-        margin-left: 80px;
+    @include varis.desktop {
+       
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
         gap: 20px;
     }
     
@@ -124,18 +157,14 @@
         border-radius: 3%;
         background-color: rgb(37, 190, 139);
 
-        @include tablet {
-          
+        @include varis.tablet {
+            width: 230px;
+            height: 400px;
         }
 
-        @include desktop {
-           
+        @include varis.desktop {
             width: 280px;
             height: 585px;
-           
-            
-         
-          
         }
     }
 
@@ -144,7 +173,7 @@
         width: 180px;   
         height: 270px; 
 
-        @include desktop { 
+        @include varis.desktop { 
             width: 240px;   
             height: auto;   
         }
@@ -155,7 +184,7 @@
         font-size: 20px;
         color: white;
 
-        @include desktop {
+        @include varis.desktop {
             margin-top: 25px;
             font-size: 26px;
             color: white;
@@ -166,7 +195,7 @@
         font-size: 16px;
         color: yellow;
 
-        @include desktop {
+        @include varis.desktop {
             font-size: 22px;
             color: yellow;
         }
@@ -177,7 +206,7 @@
         font-size:12px;
         color: white;
 
-        @include desktop {
+        @include varis.desktop {
             margin-inline: 10px;
             font-size:18px;
             color: white;
@@ -186,7 +215,6 @@
 }
 
 .detail {
-    margin-inline: 25px;
     padding-bottom: 25px;
     list-style-type: none;
     width: 300px;
@@ -194,28 +222,28 @@
     border: 12px dashed black; 
     background-color: rgb(37, 190, 139);
     text-align: center;
-    align-items: center;
     justify-content: center;
     list-style-type: none;
-   
-    @include desktop {
+    margin-inline: auto;
+
+    @include varis.tablet {
+        border: 15px dashed black;
+        width: 700px;
+    }
+
+    @include varis.desktop {
         display: grid;
-        grid-template-columns: 35% 65%;
-        margin-inline: 100px;
-        text-align: center;
-        align-items: center;     
-        justify-content: center;
-        width: auto;
-        height: auto;
+        grid-template-columns: 40% 60%;   
         border: 18px dashed black; 
-        padding-bottom: 100px;
+        padding-bottom: 40px;
+        width: auto;
     }
    
     &_colum {
-        line-height: 40px; 
-
-        @include desktop {
-            ine-height: 100px; 
+        line-height: 40px;
+        
+        @include varis.tablet {
+            line-height: 70px;
         }
     }
 
@@ -226,11 +254,16 @@
         width: 220px;   
         height: 300px; 
 
-        @include desktop {
+        @include varis.tablet {
+            width: 500px;   
+            height: auto; 
+        }
+
+        @include varis.desktop {
             border: 8px double red;
             margin-left: 55px;
             width:380px;   
-            height: 540px; 
+            height: auto; 
         }  
     }
 
@@ -240,9 +273,12 @@
         font-weight: bold;
         color: white;
 
-        @include desktop {
-            padding-top: 45px;
-            font-size: 100px;
+        @include varis.tablet {
+            font-size: 75px;
+        }
+
+        @include varis.desktop {
+            margin-bottom: 25px;
             font-weight: bold;
             color: white;
         }
@@ -251,7 +287,12 @@
     &_span {
         display: none;
 
-        @include desktop {
+        @include varis.tablet {
+            display: inline-block;
+            font-size: 25px;  
+        }
+
+        @include varis.desktop {
             font-size: 50px;
             margin-inline: 20px;
         }
@@ -261,9 +302,13 @@
         font-size: 25px;
         color: yellow;
 
-        @include desktop {
+        @include varis.tablet {
+            font-size: 35px;
+
+        }
+
+        @include varis.desktop {
             font-size: 45px;
-            color: yellow;
         }
     }
 
@@ -271,37 +316,44 @@
         height: 80px;
         width: 70px;
 
-        @include desktop {
+        @include varis.tablet {
+            height: 120px;
+            width: 110px;
+        }
+
+        @include varis.desktop {
             height: 160px;
             width: 140px;
-            }
+        }
     }
 
     &_full_line {
         font-size: 20px;
         color: white;
 
-        @include desktop {
+        @include varis.tablet {
+            font-size: 25px;
+
+        }
+        @include varis.desktop {
+            margin-inline: 25px;
             font-size: 30px;
-            color: white;
         }
     }
 
     &_audio {
         height: 85px;
-        width:150px;
+        width:150px; 
 
-        @include desktop {
-            font-size: 25px;
-            font-weight: bold;
-            border: 3px solid yellow;  
+        @include varis.tablet {
+            height: 110px;
+            width:180px; 
         }
     }
 }
 
 .btn {
     padding: 5px 5px;
-    line-height: 60px;
     text-align: center;
     font-size: 20px;
     text-decoration: none;
@@ -310,19 +362,11 @@
     border-radius: 8px;
     color: rgb(131, 18, 18);
     font-weight: bold;
-   
-    @include desktop {
-        text-align: center;
-        font-size: 20px;
-        height: 45px;
-        width: 85px;
-        text-decoration: none;
-        border: 2px solid yellow;
-        background-color: yellow;
-        border-radius: 15px;
-        font-weight: bold;
-        padding-top: 8px;
-        margin-left: 35%;
 
+    @include varis.tablet {
+        margin-inline: auto;
+        width: 75px;
+        font-size: 20px;
     }
+
 }
