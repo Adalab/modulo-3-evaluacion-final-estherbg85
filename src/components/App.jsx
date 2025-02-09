@@ -52,6 +52,7 @@ function App() {
   function filterMovieYear(film, age) {
     setMovieOne(film);
     setYearOne(age);
+
     if (film === ""){
       setFilteredMovies(movies.filter((movie) => movie.year === Number(age)));
     }
@@ -61,7 +62,7 @@ function App() {
     }else{
       setFilteredMovies(movies.filter((movie) => (movie.movie.toLowerCase().includes(film) && movie.year === Number(age))));
     }
-  }
+  } 
 
   const findMovie = (movie) => {
     return movies.find(oneMovie => oneMovie.movie === movie);
@@ -82,7 +83,7 @@ function App() {
       <main>
         
         <Routes>
-          <Route index element={<LandingPage  movies={filteredMovies} handleInputFilterMovie={handleInputFilterMovie} uniqueYears={uniqueYears} handleYearFilter={handleYearFilter} handleKeyDown={handleKeyDown} handleClickClear={handleClickClear} movieOne={movieOne}/>} ></Route>
+          <Route index element={<LandingPage  movies={filteredMovies} handleInputFilterMovie={handleInputFilterMovie} uniqueYears={uniqueYears} handleYearFilter={handleYearFilter} handleKeyDown={handleKeyDown} handleClickClear={handleClickClear} movieOne={movieOne} yearOne={yearOne}/>} ></Route>
           <Route path="detail/:movie" element={<MovieSceneDetail findMovie={findMovie}/>}></Route>
         </Routes>
         

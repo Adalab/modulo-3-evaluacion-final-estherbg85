@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 
-function FilterYears({years, onChange} ){
+function FilterYears({years, onChange, yearOne} ){
                      
     return (
-        <select className="form_search" id="yearFilter" placeholder="All" onChange={onChange}>
+        <select className="form_search" id="yearFilter" placeholder="All" onChange={onChange}  value={yearOne}>
             <option value="">All</option>
             {years.map((year) => (
                 <option key={year} value={year}>{year}</option>
@@ -15,7 +15,8 @@ function FilterYears({years, onChange} ){
 
 FilterYears.propTypes = {
     years: PropTypes.array,
-    onChange: PropTypes.func
+    onChange: PropTypes.func,
+    yearOne: PropTypes.string
 };
 
 export default FilterYears;

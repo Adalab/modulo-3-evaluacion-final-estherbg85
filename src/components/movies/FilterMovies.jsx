@@ -2,9 +2,8 @@ import PropTypes from 'prop-types';
 import FilterYears from "./FilterYears";
 
 function FilterMovies({handleInputFilterMovie, uniqueYears, handleYearFilter,
-    handleKeyDown, handleClickClear, movieOne }) {
-    console.log("movieOne");
-    console.log({movieOne});
+    handleKeyDown, handleClickClear, movieOne,yearOne }) {
+   
     return(
         <form className="form">
             <label  className="form_filter" htmlFor="movie">Movie</label>
@@ -18,7 +17,7 @@ function FilterMovies({handleInputFilterMovie, uniqueYears, handleYearFilter,
             value={movieOne}
             />
             <label  className="form_filter" htmlFor="year">Year</label>
-            <FilterYears years={uniqueYears} onChange={handleYearFilter}></FilterYears>
+            <FilterYears years={uniqueYears} onChange={handleYearFilter} yearOne={yearOne}></FilterYears>
             <button className="form_btn" onClick={handleClickClear}>Borrar</button>
             
       </form>
@@ -32,6 +31,7 @@ FilterMovies.propTypes = {
     handleYearFilter: PropTypes.func,
     handleKeyDown: PropTypes.func,
     handleClickClear: PropTypes.func,
-    movieOne: PropTypes.string
+    movieOne: PropTypes.string,
+    yearOne: PropTypes.string
 };
 export default FilterMovies;

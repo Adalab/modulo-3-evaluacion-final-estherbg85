@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import {useParams, Link} from 'react-router';
 import imgmovie from '../../images/—Pngtree—a free director s chair_15014238 (2).png'
 import imgaudio from '../../images/13-50-26-112_512.webp';
@@ -23,5 +24,9 @@ function MovieSceneDetail({findMovie}) {
         </section>
     );
 }
+
+MovieSceneDetail.propTypes = {
+    findMovie: PropTypes.func
+};
 
 export default MovieSceneDetail;

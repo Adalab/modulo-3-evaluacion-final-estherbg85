@@ -3,7 +3,7 @@ import MovieSceneList from "../movies/MovieSceneList";
 import FilterMovies from "../movies/FilterMovies";
 import gift from "../../images/source.gif"
 
-function LandingPage({movies, handleInputFilterMovie, uniqueYears, handleYearFilter, handleKeyDown, handleClickClear, movieOne}) {
+function LandingPage({movies, handleInputFilterMovie, uniqueYears, handleYearFilter, handleKeyDown, handleClickClear, movieOne, yearOne}) {
 
     return (
         
@@ -13,7 +13,7 @@ function LandingPage({movies, handleInputFilterMovie, uniqueYears, handleYearFil
                 handleYearFilter={handleYearFilter} 
                 handleKeyDown={handleKeyDown} 
                 handleClickClear={handleClickClear} 
-                movieOne={movieOne} />
+                movieOne={movieOne} yearOne={yearOne}/>
             {movies.length === 0 ? (
                 <p className="not_found">No se ha encontrado ninguna pelicula con el nombre: {movieOne}<img className="gift" src={gift}></img></p>) : ( 
                 <MovieSceneList movies={movies}/>)}
@@ -28,7 +28,8 @@ LandingPage.propTypes = {
     handleYearFilter: PropTypes.func,
     handleKeyDown: PropTypes.func,
     handleClickClear: PropTypes.func,
-    movieOne: PropTypes.string
+    movieOne: PropTypes.string,
+    yearOne: PropTypes.string
 };
 
 
