@@ -70,7 +70,8 @@ Sigue estos pasos para ejecutar ADAcheap en tu entorno local:
     Director: El director de la película.
     Full_line: Frase donde dice la palabra "Wow".
     Audio: El audio de la frase donde dice "Wow".
-  - **`Hooks`** Contiene el useEffect que usamos para pintar todo el listado de películas que nos traemos de la API
+  - **`Lib`**
+    => Hooks.js: Contiene el useEffect que usamos para pintar todo el listado de películas que nos traemos de la API
 - **App.scss** Contine los import de todo el css usado en la aplicación y que está repartido en diferentes carpetas:
   - `Header.scss`
   - `Form.scss`
