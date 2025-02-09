@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { useFetch } from "../lib/hooks";
 import "../styles/App.scss";
 import { Routes, Route } from 'react-router';
 import Header from './layout/Header';
@@ -7,58 +8,48 @@ import LandingPage from './pages/LandingPage';
 
 
 
+
 function App() {
 
   //VARIABLES DE ESTADO
 
-  const [movies, setMovies] = useState([]);
+  
   const [filteredMovies, setFilteredMovies] = useState([]);
-  const [uniqueYears, setUniqueYears] = useState([]);
   const [movieOne, setMovieOne] = useState("");
   const [yearOne, setYearOne] = useState("");
+  const {movies, uniqueYears} = useFetch();
 
 
-  //USEEFFECT
-
-  useEffect( () =>{
-    fetch('https://owen-wilson-wow-api.onrender.com/wows/random?results=50')
-    .then(response => response.json() )
-    .then(dataJson => {
-      setMovies(dataJson);
-      setFilteredMovies(dataJson);
-
-        const movieYears = [...new Set(dataJson.map((oneMovie) => oneMovie.year))];
-        setUniqueYears(movieYears);
-    });
-  }, []);
   
   
-  const handleInputFilterMovie = (ev) => {
+  //EVENTOS  /  FUNCIONES
+  
+  const handleKeyDown = (ev) => {// Para evitar recargar la pagina al pulsar enter en un campo
+    if (ev.key === "Enter") {
+      ev.preventDefault(); 
+    }
+  };
+  
+  const handleInputFilterMovie = (ev) => {  //Filtrar por nombre 
     ev.preventDefault();
     filterMovieYear(ev.target.value.toLowerCase(), yearOne);
   };
 
-  const handleKeyDown = (ev) => {
-    if (ev.key === "Enter") {
-      ev.preventDefault(); // Para evitar recargar la pagina al pulsar
-    }
-  };
-
-  const handleYearFilter = (ev) => {
+  const handleYearFilter = (ev) => {  //Filtrar por años
     ev.preventDefault();
     filterMovieYear(movieOne, ev.target.value);
   };
    
-  function filterMovieYear(film, age) {
+  function filterMovieYear(film, age) {  //Filtrado por nombre y despues por año
     setMovieOne(film);
     setYearOne(age);
 
-    if (film === ""){
+    if (film === "" && age === ""){
+      setFilteredMovies(movies);
+    }else if (film === ""){
       setFilteredMovies(movies.filter((movie) => movie.year === Number(age)));
-    }
-    if (age === "") {
-      setFilteredMovies(movies.filter((movie) => movie.movie.toLowerCase().includes(film)));
-    
+    }else if (age === "") {
+      setFilteredMovies(movies.filter((movie) => movie.movie.toLowerCase().includes(film)));    
     }else{
       setFilteredMovies(movies.filter((movie) => (movie.movie.toLowerCase().includes(film) && movie.year === Number(age))));
     }
@@ -68,11 +59,11 @@ function App() {
     return movies.find(oneMovie => oneMovie.movie === movie);
    }
 
-   const handleClickClear = (ev) => {
-    ev.preventDefault(); //Volver a mostrar todo el listado
+   const handleClickClear = (ev) => {  //Limpiar campos al hacer click en borrar
+    ev.preventDefault(); 
     setMovieOne(""); // Limpiar el filtro de películas
     setYearOne(""); // Limpiar el filtro de años
-    setFilteredMovies(movies);
+    setFilteredMovies(movies); //Volver a mostrar todo el listado
     
    }
 
@@ -83,7 +74,7 @@ function App() {
       <main>
         
         <Routes>
-          <Route index element={<LandingPage  movies={filteredMovies} handleInputFilterMovie={handleInputFilterMovie} uniqueYears={uniqueYears} handleYearFilter={handleYearFilter} handleKeyDown={handleKeyDown} handleClickClear={handleClickClear} movieOne={movieOne} yearOne={yearOne}/>} ></Route>
+          <Route index element={<LandingPage  movies={filteredMovies.length !== 0 ? filteredMovies : movies} handleInputFilterMovie={handleInputFilterMovie} uniqueYears={uniqueYears} handleYearFilter={handleYearFilter} handleKeyDown={handleKeyDown} handleClickClear={handleClickClear} movieOne={movieOne} yearOne={yearOne}/>} ></Route>
           <Route path="detail/:movie" element={<MovieSceneDetail findMovie={findMovie}/>}></Route>
         </Routes>
         
